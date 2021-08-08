@@ -5,11 +5,11 @@ class Item < ApplicationRecord
   validates :description, presence: true
 
   with_options numericality: { other_than: 1, message: "can't be blank" } do
-    validates :category
-    validates :item_status
-    validates :delivery_fee
-    validates :province
-    validates :delivery_days
+    validates :category_id
+    validates :item_status_id
+    validates :delivery_fee_id
+    validates :province_id
+    validates :delivery_days_id
   end
 
   validates :price, presence: true,
