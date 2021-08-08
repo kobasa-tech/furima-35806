@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   end
 
   validates :price, presence: true,
-  format: { with: /\A[0-9]+\z/ },
+  format:       { with: /\A[0-9]+\z/ },
   numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
   # アソシエーションの設定
