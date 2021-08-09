@@ -1,8 +1,10 @@
 class Item < ApplicationRecord
   # バリデーションの設定
-  validates :image, presence: true
-  validates :name, presence: true
-  validates :description, presence: true
+  with_options presence: true do
+    validates :image
+    validates :name
+    validates :description
+  end
 
   with_options numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
