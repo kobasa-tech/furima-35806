@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   validates :nickname, presence: true
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -20,4 +20,6 @@ class User < ApplicationRecord
   end
 
   validates :birthday, presence: true
+
+  has_many :items
 end
