@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :province_id, :city, :address_line, :building, :phone_number
+  attr_accessor :user_id, :item_id, :postal_code, :province_id, :city, :address_line, :building, :phone_number, :token
 
   # バリデーションの設定
   with_options presence: true do
@@ -11,6 +11,7 @@ class OrderAddress
     validates :city
     validates :address_line
     validates :phone_number, format: { with: /\A[0-9]{10,11}\z/ }
+    validates :token
   end
 
   # 複数のデータベースへの保存処理
