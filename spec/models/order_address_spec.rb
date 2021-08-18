@@ -10,7 +10,7 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     context '購入できるとき' do
-      it '郵便番号、都道府県、市区町村、番地、建物名、電話番号が正しく入力できれば購入できる' do
+      it '郵便番号、都道府県、市区町村、番地、建物名、電話番号、トークンが問題なければ購入できる' do
         expect(@order_address).to be_valid
       end
       it '建物名は空でも購入できる' do
@@ -90,6 +90,12 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.item_id = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Item can't be blank")
+      end
+
+      it 'トークンが空では購入できない' do
+        @order_address.token = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
