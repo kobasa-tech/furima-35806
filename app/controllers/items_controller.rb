@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :set_item,           only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index,      only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.order("created_at DESC")
+    @items = Item.order('created_at DESC')
   end
 
   def new
@@ -47,13 +47,13 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 
-  def move_to_index
-    unless @item.user_id == current_user.id
-      redirect_to root_path
-    end
-  end
-
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_index
+    if (@item.user_id != current_user.id) || @item.order.present?
+      redirect_to root_path
+    end
   end
 end
