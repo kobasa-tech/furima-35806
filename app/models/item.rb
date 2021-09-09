@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   # バリデーションの設定
   with_options presence: true do
-    validates :image
+    validates :images
     validates :name
     validates :description
   end
@@ -19,7 +19,7 @@ class Item < ApplicationRecord
   numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
   # アソシエーションの設定
-  has_one_attached :image
+  has_many_attached :images
   belongs_to :user
   has_one :order
 

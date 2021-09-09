@@ -33,6 +33,24 @@
   object-fit: contain;
 }
 
+/* プレビュー */
+.image-list {
+  margin-top: 10px;
+  width: 60vw;
+  display: flex;
+  background-color: rgb(205, 202, 202);
+  justify-content: space-between;
+}
+
+.image-list .images {
+  padding: 15px 0;
+  width: 47%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+}
+/* プレビュー */
+
 .item-price-box {
   margin: 25px 0px;
   display: flex;
